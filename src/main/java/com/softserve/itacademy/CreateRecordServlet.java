@@ -1,6 +1,5 @@
 package com.softserve.itacademy;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,17 +17,20 @@ public class CreateRecordServlet extends HttpServlet {
         addressBook = AddressBook.getInstance();
     }
 
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/WEB-INF/create-record.jsp").forward(request, response);
-
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String address = request.getParameter("address");
-        addressBook.create(firstName, lastName, address);
-        response.sendRedirect("/records/list");
+        if (addressBook.create(firstName, lastName, address))
+            response.sendRedirect("/records/list");
+        else {
+            request.getRequestDispatcher("/WEB-INF/create-record-error.jsp").forward(request, response);
+        }
+
     }
 }

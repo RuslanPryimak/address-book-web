@@ -40,13 +40,13 @@
     <td><%=lastName%></td>
     <td><%=address%></td>
     <td>
-        <a href="/records/read?first-name=<%=firstName%>&last-name=<%=lastName%>">Read</a>
+        <a href="/records/read?firstName=<%=firstName%>&lastName=<%=lastName%>">Read</a>
     </td>
     <td>
-        <a href="/records/update?first-name=<%=firstName%>&last-name=<%=lastName%>&address=<%=address%>">Update</a>
+        <a href="/records/update?firstName=<%=firstName%>&lastName=<%=lastName%>&address=<%=address%>">Update</a>
     </td>
     <td>
-        <a href="/records/delete?first-name=<%=firstName%>&last-name=<%=lastName%>">Delete</a>
+        <a href="/records/delete?firstName=<%=firstName%>&lastName=<%=lastName%>">Delete</a>
     </td>
     </tr>
     <%
